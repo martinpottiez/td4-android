@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 
 class NewsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +16,13 @@ class NewsActivity : AppCompatActivity() {
         val detailsButton = findViewById<Button>(R.id.details)
         val aboutButton = findViewById<Button>(R.id.about)
         val logoutButton = findViewById<Button>(R.id.logout)
+        val loginLabel = findViewById<TextView>(R.id.usernameLabel)
+
+        if(intent.hasExtra("username")) {
+            val username = intent.getStringExtra("username")
+            loginLabel.text = "Bonjour, " + username
+        }
+
         detailsButton.setOnClickListener {
             val intent = Intent(this, DetailsActivity::class.java)
             startActivity(intent)
@@ -32,5 +40,6 @@ class NewsActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+
     }
 }
