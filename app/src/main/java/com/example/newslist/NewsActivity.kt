@@ -39,7 +39,6 @@ class NewsActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-
+        finish()
     }
 }

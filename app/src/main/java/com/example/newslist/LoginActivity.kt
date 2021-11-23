@@ -16,13 +16,10 @@ class LoginActivity : AppCompatActivity() {
         val loginLabel = findViewById<EditText>(R.id.loginLabel)
         loginButton.setOnClickListener {
             val intent = Intent(this, NewsActivity::class.java)
-            intent.putExtra("username", loginLabel.text.toString())
+            (applicationContext as NewsListApplication).login = loginLabel.text.toString()
+            intent.putExtra("username", (applicationContext as NewsListApplication).login)
             startActivity(intent)
+            finish()
         }
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
     }
 }
